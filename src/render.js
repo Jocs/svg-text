@@ -133,6 +133,7 @@ export default function render(text, options, lineHeight) {
       if (isFinalLine || !lineStr) {
         complete = true;
       }
+      tmpStr = '';
       workingLineStr = '';
       ++tspanIndex;
     }
