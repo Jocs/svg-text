@@ -38,8 +38,5 @@
   },
   "jest": {
     "testRegex": "(/spec/.*|\\.(test|spec))\\.(spec.js|js|json|jsx|node)$"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
   }
 }
