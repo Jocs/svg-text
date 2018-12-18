@@ -1,9 +1,10 @@
 {
-  "name": "svg-text",
+  "name": "svg-text2",
   "version": "0.5.2",
   "description": "Utilities for working with SVG, including SvgText for multiline text.",
   "main": "./dist/svg-text.js",
   "scripts": {
+    "build": "webpack",
     "test": "jest",
     "watch": "webpack --watch",
     "demo": "http-server -c-1 ./"

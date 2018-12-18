@@ -85,13 +85,13 @@ export default function render(text, options, lineHeight) {
     const tspan = createTspan(text, tmpStrF, lineHeight);
 
     let complete = false;
-    if (textFits(text)) {
+    if (textFits(text) && c !== '\n') {
       // Text with the test character fits, so now just exit if there are no
       // more characters to write.
       lineStr = tmpStr;
       if (!charsRemain) {
         complete = true;
-      } else if (isWordBound(c)) {
+      } else {
         workingLineStr = tmpStrF;
       }
     } else {
@@ -121,7 +121,7 @@ export default function render(text, options, lineHeight) {
         }
         if (isFinalLine) {
           lineStr = lineStr.replace(/^\s+$/, '');
-        } else {
+        } else if (c !== '\n') {
           --index;
         }
       }
@@ -136,7 +136,7 @@ export default function render(text, options, lineHeight) {
       workingLineStr = '';
       ++tspanIndex;
     }
-    if (!complete && isWordBound(c)) {
+    if (!complete) {
       lastBoundIndex = index;
     }
     // return complete;
