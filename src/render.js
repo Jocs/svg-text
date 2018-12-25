@@ -51,6 +51,7 @@ export default function render(text, options, lineHeight) {
     return 0;
   }
 
+  // 处理只有一行的情况
   if (options.maxLines === 1 || (options.width === 'auto' && options.maxWidth === 'auto')) {
     appendTspan(text, options.text, 0, 0);
     return 1;
@@ -77,6 +78,7 @@ export default function render(text, options, lineHeight) {
   while (index < chars.length) {
     const c = chars[index];
     charIndex = index;
+    // 判断是否结束
     isFinalLine = tspanIndex + 1 === maxLines || height + lineHeight > maxHeight;
     charsRemain = !/^\s*$/.test(chars.slice(index).join(''));
 
@@ -128,9 +130,10 @@ export default function render(text, options, lineHeight) {
 
       lineStr = lineStr.replace(/^\s+|\s+$/g, '');
       writeInnerHTML(tspan, lineStr);
+      lineStr = '';
       // Remove temporarily to prevent the width from getting whacky:
       text.removeChild(tspan);
-      if (isFinalLine || !lineStr) {
+      if (isFinalLine) {
         complete = true;
       }
       tmpStr = '';

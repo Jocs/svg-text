@@ -1,4 +1,4 @@
-/*! svg-text2 v0.5.3 */
+/*! svg-text2 v0.5.4 */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -671,7 +671,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
-	 * Tests if a value is a valid number and also >= 0.
+	 * Tests if a value is a valid number and also >= 0. 非负数
 	 * @returns {boolean}
 	 */
 	function isPosNum(n) {
@@ -2937,6 +2937,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return 0;
 	  }
 
+	  // 处理只有一行的情况
 	  if (options.maxLines === 1 || options.width === 'auto' && options.maxWidth === 'auto') {
 	    (0, _svg.appendTspan)(text, options.text, 0, 0);
 	    return 1;
@@ -2963,6 +2964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  while (index < chars.length) {
 	    var c = chars[index];
 	    charIndex = index;
+	    // 判断是否结束
 	    isFinalLine = tspanIndex + 1 === maxLines || height + lineHeight > maxHeight;
 	    charsRemain = !/^\s*$/.test(chars.slice(index).join(''));
 
@@ -3013,9 +3015,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      lineStr = lineStr.replace(/^\s+|\s+$/g, '');
 	      (0, _svg.writeInnerHTML)(_tspan, lineStr);
+	      lineStr = '';
 	      // Remove temporarily to prevent the width from getting whacky:
 	      text.removeChild(_tspan);
-	      if (isFinalLine || !lineStr) {
+	      if (isFinalLine) {
 	        complete = true;
 	      }
 	      tmpStr = '';

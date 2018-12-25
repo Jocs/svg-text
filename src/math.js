@@ -3,7 +3,7 @@ import isFinite from 'lodash.isfinite';
 import merge from 'lodash.merge';
 
 /**
- * Tests if a value is a valid number and also >= 0.
+ * Tests if a value is a valid number and also >= 0. 非负数
  * @returns {boolean}
  */
 export function isPosNum(n) {
