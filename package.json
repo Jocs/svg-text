@@ -1,6 +1,6 @@
 {
   "name": "svg-text2",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Utilities for working with SVG, including SvgText for multiline text.",
   "main": "./dist/svg-text.js",
   "scripts": {

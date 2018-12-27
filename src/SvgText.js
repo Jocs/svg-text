@@ -199,7 +199,7 @@ function writeStyleAsCss(options) {
 }
 
 function sizeBounds(text, options) {
-  const p = options.padding;
+  const { padding, scale = 1 } = options;
   const textRect = text.getBoundingClientRect();
   const bounds = {
     x: options.x,
@@ -208,15 +208,15 @@ function sizeBounds(text, options) {
     height: textRect.height,
   };
 
-  bounds.width = isPosNum(options.width) ? options.width : (textRect.width + p[3] + p[1]);
+  bounds.width = isPosNum(options.width) ? options.width : (textRect.width + padding[3] + padding[1]);
   if (options.align === 'right') {
     bounds.x -= bounds.width;
   } else if (options.align === 'center') {
     bounds.x -= bounds.width / 2;
   }
 
-  bounds.height = isPosNum(options.height) ? options.height :
-    (textRect.height + p[0] + p[2]);
+  bounds.height = isPosNum(options.height) ? options.height : (textRect.height + padding[0] + padding[2]) / scale;
+
   if (options.verticalAlign === 'bottom') {
     bounds.y -= bounds.height;
   } else if (options.verticalAlign === 'middle') {

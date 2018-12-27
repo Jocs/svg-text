@@ -327,7 +327,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function sizeBounds(text, options) {
-	  var p = options.padding;
+	  var padding = options.padding,
+	      _options$scale = options.scale,
+	      scale = _options$scale === undefined ? 1 : _options$scale;
+
 	  var textRect = text.getBoundingClientRect();
 	  var bounds = {
 	    x: options.x,
@@ -336,14 +339,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    height: textRect.height
 	  };
 
-	  bounds.width = (0, _math.isPosNum)(options.width) ? options.width : textRect.width + p[3] + p[1];
+	  bounds.width = (0, _math.isPosNum)(options.width) ? options.width : textRect.width + padding[3] + padding[1];
 	  if (options.align === 'right') {
 	    bounds.x -= bounds.width;
 	  } else if (options.align === 'center') {
 	    bounds.x -= bounds.width / 2;
 	  }
 
-	  bounds.height = (0, _math.isPosNum)(options.height) ? options.height : textRect.height + p[0] + p[2];
+	  bounds.height = (0, _math.isPosNum)(options.height) ? options.height : (textRect.height + padding[0] + padding[2]) / scale;
+
 	  if (options.verticalAlign === 'bottom') {
 	    bounds.y -= bounds.height;
 	  } else if (options.verticalAlign === 'middle') {
