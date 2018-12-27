@@ -1,4 +1,4 @@
-/*! svg-text2 v0.5.4 */
+/*! svg-text2 v0.5.6 */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -346,7 +346,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    bounds.x -= bounds.width / 2;
 	  }
 
-	  bounds.height = (0, _math.isPosNum)(options.height) ? options.height : (textRect.height + padding[0] + padding[2]) / scale;
+	  bounds.height = (0, _math.isPosNum)(options.height) ? options.height : textRect.height / scale + padding[0] + padding[2];
 
 	  if (options.verticalAlign === 'bottom') {
 	    bounds.y -= bounds.height;

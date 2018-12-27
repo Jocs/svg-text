@@ -215,7 +215,7 @@ function sizeBounds(text, options) {
     bounds.x -= bounds.width / 2;
   }
 
-  bounds.height = isPosNum(options.height) ? options.height : (textRect.height + padding[0] + padding[2]) / scale;
+  bounds.height = isPosNum(options.height) ? options.height : (textRect.height / scale + padding[0] + padding[2]);
 
   if (options.verticalAlign === 'bottom') {
     bounds.y -= bounds.height;
